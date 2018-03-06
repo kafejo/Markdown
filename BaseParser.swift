@@ -16,26 +16,33 @@ class BaseParser {
 
     private(set) var markExpressions: [MarkExpression] = []
 
-    func attributedString(from markdown: String, baseAttributes: [NSAttributedStringKey: Any]? = nil) -> NSAttributedString {
-        let attributed = NSAttributedString(string: markdown, attributes: baseAttributes)
+    func attributedString(from markdown: String, defaultAttributes: [NSAttributedStringKey: Any]? = nil) -> NSAttributedString {
+        // Apply default attributes to the whole content
+        let attributed = NSAttributedString(string: markdown, attributes: defaultAttributes)
         return attributedString(from: attributed)
     }
 
+    /// Applies mark expressions on given markdowned string
     func attributedString(from markdown: NSAttributedString) -> NSAttributedString {
         var mutableContent = NSMutableAttributedString(attributedString: markdown)
 
         for markExpression in markExpressions {
-            var location = 0
-
-            while let match = markExpression.expression.firstMatch(in: mutableContent.string, options: [.withoutAnchoringBounds], range: NSRange(location: location, length: mutableContent.length - location)) {
-
-                let oldLength = mutableContent.length
-                markExpression.action(match, &mutableContent)
-                let newLength = mutableContent.length
-                location = match.range.location + match.range.length + newLength - oldLength
-            }
+            findAndApplyAllOccurences(of: markExpression, mutableContent: &mutableContent)
         }
 
         return mutableContent
+    }
+
+    private func findAndApplyAllOccurences(of markExpression: MarkExpression, mutableContent: inout NSMutableAttributedString) {
+        var location = 0
+        /// Iterate every match and do adjustments
+        while let match = markExpression.expression.firstMatch(in: mutableContent.string, options: [.withoutAnchoringBounds], range: NSRange(location: location, length: mutableContent.length - location)) {
+
+            let oldLength = mutableContent.length
+            markExpression.action(match, &mutableContent)
+            let newLength = mutableContent.length
+            // Calculate location for next range to search
+            location = match.range.location + match.range.length + newLength - oldLength
+        }
     }
 }

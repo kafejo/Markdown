@@ -16,6 +16,10 @@ class BaseParser {
 
     private(set) var markExpressions: [MarkExpression] = []
 
+    func add(markExpression: MarkExpression) {
+        markExpressions.append(markExpression)
+    }
+
     func attributedString(from markdown: String, defaultAttributes: [NSAttributedStringKey: Any]? = nil) -> NSAttributedString {
         // Apply default attributes to the whole content
         let attributed = NSAttributedString(string: markdown, attributes: defaultAttributes)

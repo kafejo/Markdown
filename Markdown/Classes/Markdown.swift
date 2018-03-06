@@ -7,7 +7,7 @@
 
 import Foundation
 
-class Markdown {
+public class Markdown {
     let parser = BaseParser()
 
     init() {
@@ -35,7 +35,7 @@ class Markdown {
 
     // MARK: - Public API
 
-    class func attributedString(fromMarkdown markdown: String) -> NSAttributedString {
+    public class func attributedString(fromMarkdown markdown: String) -> NSAttributedString {
         let md = Markdown()
         return md.parser.attributedString(from: markdown, defaultAttributes: md.defaultAttributes)
     }

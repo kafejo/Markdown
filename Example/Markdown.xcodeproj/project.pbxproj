@@ -13,6 +13,7 @@
 		607FACDD1AFB9204008FA782 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 607FACDC1AFB9204008FA782 /* Images.xcassets */; };
 		607FACE01AFB9204008FA782 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 607FACDE1AFB9204008FA782 /* LaunchScreen.xib */; };
 		607FACEC1AFB9204008FA782 /* Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACEB1AFB9204008FA782 /* Tests.swift */; };
+		90F3B0D3204F4BE500ADD14C /* test.md in Resources */ = {isa = PBXBuildFile; fileRef = 90F3B0D2204F4BE500ADD14C /* test.md */; };
 		9BD81867C9A048CB70F9B3A4 /* Pods_Markdown_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FD513DDBE01DC1D25C45FE88 /* Pods_Markdown_Tests.framework */; };
 		C6CCC3B4790A11F8C0F3A64B /* Pods_Markdown_Example.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 185761BC6FB639D72F9CB560 /* Pods_Markdown_Example.framework */; };
 /* End PBXBuildFile section */
@@ -42,6 +43,7 @@
 		607FACEA1AFB9204008FA782 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		607FACEB1AFB9204008FA782 /* Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tests.swift; sourceTree = "<group>"; };
 		7EB04EBE73A526EED70BDB65 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
+		90F3B0D2204F4BE500ADD14C /* test.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = test.md; sourceTree = "<group>"; };
 		AE0C7BA680910FBA23436DDC /* Pods-Markdown_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Markdown_Example.release.xcconfig"; path = "Pods/Target Support Files/Pods-Markdown_Example/Pods-Markdown_Example.release.xcconfig"; sourceTree = "<group>"; };
 		CD2C00D56E7E04D5F5B8F60D /* Pods-Markdown_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Markdown_Tests.release.xcconfig"; path = "Pods/Target Support Files/Pods-Markdown_Tests/Pods-Markdown_Tests.release.xcconfig"; sourceTree = "<group>"; };
 		D0721DB4AF20FCFFA130AFBE /* Markdown.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = Markdown.podspec; path = ../Markdown.podspec; sourceTree = "<group>"; };
@@ -106,6 +108,7 @@
 			children = (
 				607FACD51AFB9204008FA782 /* AppDelegate.swift */,
 				607FACD71AFB9204008FA782 /* ViewController.swift */,
+				90F3B0D2204F4BE500ADD14C /* test.md */,
 				607FACD91AFB9204008FA782 /* Main.storyboard */,
 				607FACDC1AFB9204008FA782 /* Images.xcassets */,
 				607FACDE1AFB9204008FA782 /* LaunchScreen.xib */,
@@ -250,6 +253,7 @@
 			files = (
 				607FACDB1AFB9204008FA782 /* Main.storyboard in Resources */,
 				607FACE01AFB9204008FA782 /* LaunchScreen.xib in Resources */,
+				90F3B0D3204F4BE500ADD14C /* test.md in Resources */,
 				607FACDD1AFB9204008FA782 /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

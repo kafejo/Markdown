@@ -12,7 +12,7 @@ struct MarkExpression {
     let action: (NSTextCheckingResult, inout NSMutableAttributedString) -> Void
 }
 
-class BaseParser {
+class Parser {
 
     private(set) var markExpressions: [MarkExpression] = []
 

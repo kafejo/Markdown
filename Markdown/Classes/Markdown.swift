@@ -13,6 +13,7 @@ public class Markdown {
     init() {
         parser.add(markExpression: strongExpression)
         parser.add(markExpression: emphasisExpression)
+        parser.add(markExpression: monospaceExpression)
     }
 
     // MARK: - Styling
@@ -20,12 +21,21 @@ public class Markdown {
     var defaultAttributes: [NSAttributedStringKey: Any] = [.font: UIFont.systemFont(ofSize: 17.0, weight: .regular)]
     var strongAttributes: [NSAttributedStringKey: Any] = [.font: UIFont.systemFont(ofSize: 17.0, weight: .bold)]
     var emphasisAttributes: [NSAttributedStringKey: Any] = [.font: UIFont.italicSystemFont(ofSize: 17)]
+    var monospaceAttributes: [NSAttributedStringKey: Any] = [
+        .font: UIFont(name: "Courier New", size: 17.0)!,
+        .foregroundColor: UIColor(white: 0.1, alpha: 1.0),
+        .backgroundColor: UIColor(white: 0.95, alpha: 1.0)
+    ]
 
     // MARK: - Strong
 
+    /*
+     Use **strong** or __two__ dashes to make text bolder
+     */
     private static let strongPattern = "(\\*\\*|__)(.+?)(\\1)"
 
     private var strongExpression: MarkExpression {
+
         return enclosedExpression(pattern: Markdown.strongPattern) { (range, mutableContent) in
             mutableContent.addAttributes(self.strongAttributes, range: range)
         }
@@ -41,6 +51,15 @@ public class Markdown {
     private var emphasisExpression: MarkExpression {
         return enclosedExpression(pattern: Markdown.emphasisPattern) { (range, mutableContent) in
             mutableContent.addAttributes(self.emphasisAttributes, range: range)
+        }
+    }
+
+    // MARK: - Monospace
+    private static let monospacePattern = "(`+)(\\s*.*?[^`]\\s*)(\\1)(?!`)"
+
+    private var monospaceExpression: MarkExpression {
+        return enclosedExpression(pattern: Markdown.monospacePattern) { (range, mutableContent) in
+            mutableContent.addAttributes(self.monospaceAttributes, range: range)
         }
     }
 

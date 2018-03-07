@@ -15,6 +15,7 @@ public class Markdown {
         parser.add(markExpression: MarkdownExpressions.emphasisExpression(attributes: emphasisAttributes))
         parser.add(markExpression: MarkdownExpressions.monospaceExpression(attributes: monospaceAttributes))
         parser.add(markExpression: MarkdownExpressions.headerExpression(attributes: headerAttributes))
+        parser.add(markExpression: MarkdownExpressions.listExpression(attributes: listAttributes))
     }
 
     // MARK: - Styles
@@ -36,6 +37,21 @@ public class Markdown {
         [.font: UIFont.systemFont(ofSize: 16.0, weight: .semibold)],
         [.font: UIFont.systemFont(ofSize: 15.0, weight: .medium)]
     ]
+
+    var listAttributes: [[NSAttributedStringKey: Any]] {
+        let paragraphStyle = NSMutableParagraphStyle()
+        paragraphStyle.tabStops = [NSTextTab(textAlignment: .left, location: 14.5, options: [:])]
+        paragraphStyle.defaultTabInterval = 14.5
+        paragraphStyle.paragraphSpacingBefore = 0
+        paragraphStyle.paragraphSpacing = 8
+        paragraphStyle.firstLineHeadIndent = 0
+        paragraphStyle.headIndent = 14.5
+        //paragraphStyle.lineSpacing =
+
+        return [
+            [.paragraphStyle: paragraphStyle]
+        ]
+    }
 
     // MARK: - Public API
 

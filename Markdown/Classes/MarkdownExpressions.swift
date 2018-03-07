@@ -66,6 +66,32 @@ class MarkdownExpressions {
         })
     }
 
+    // MARK: - List
+
+    private static let listPattern = "^([\\*\\+\\-]{1,%@})\\s+(.+)$"
+
+    class func listExpression(attributes: [[NSAttributedStringKey: Any]]) -> MarkExpression {
+        return leadingExpression(pattern: listPattern, maxLevel: 6, formatAction: { (mutableContent, range, level) in
+
+            let attributeLevel = level - 1
+
+            if attributeLevel < attributes.count {
+                mutableContent.addAttributes(attributes[attributeLevel], range: range)
+            }
+
+        }, markEditAction: { (mutableContent, range, level) in
+            // Replace * with •
+            let indent = NSMutableAttributedString(string: " " + String(repeating: "\t", count: level - 1) + "•  ")
+            let attributeLevel = level - 1
+            // TODO: - Fix DRY code
+            if attributeLevel < attributes.count {
+                indent.setAttributes(attributes[attributeLevel], range: NSRange(location: 0, length: indent.length))
+            }
+
+            mutableContent.replaceCharacters(in: range, with: indent)
+        })
+    }
+
     // MARK: - Helpers
 
     /**
